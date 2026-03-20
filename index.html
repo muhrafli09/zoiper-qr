@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ZOIPER QR CODE</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" onchange="GetQRCode();">
+				<span class="contact100-form-title" id="form-title">ZOIPER QR CODE</span>
+				<div class="row qrcode" id="qr-code-div">
+					<a 	href="#" 
+						target="_blank" 
+						id="qr-code-a">
+					</a>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 wrap-input100 validate-input" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" placeholder="Enter Username" id="username"> <!-- name="username" -->
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-6 wrap-input100 validate-input" data-validate = "SIP Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="text" placeholder="Enter Password" id="password">
+						<span class="focus-input100"></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-9 col-md-9 col-sm-9 wrap-input100 validate-input" data-validate="Domain">
+						<span class="label-input100">Domain</span>
+						<input class="input100" type="text" placeholder="Enter SIP Domain" id="domain">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 wrap-input100 input100-select">
+						<span class="label-input100">Protocol</span>
+						<div>
+							<select class="selection-2" id="protocol">
+								<option value="TCP">TCP</option>
+								<option value="UDP">UDP</option>
+								<option value="TLS">TLS</option>
+							</select>
+						</div>
+						<span class="focus-input100"></span>
+					</div>
+				</div>
+
+				<div> <!-- class="container-contact100-form-btn" -->
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								REFRESH
+								<i class="fa fa-repeat m-l-10" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="invisible col-lg-12 col-md-12 col-sm-12" style="font-size:13px;color:#504f4f;">
+			&copy; <script>document.write(new Date().getFullYear())</script>, 
+			Made with <i class="fa fa-heart" style="color:#e6475c;"></i> by 
+			<a style="font-size:13px" href="https://hnimminh.github.io" target="_blank">Minh Minh</a>
+		</div>
+	</div>
+	
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+		
+		$("#qr-code-div").addClass("d-none");
+		//$("#form-title").removeClass("d-none");
+		
+		function GetQRCode(){
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var domain = document.getElementById("domain").value;
+			var protocol = document.getElementById("protocol").value;
+			var zoiperQRUrl = "https://oem.zoiper.com/qr.php?provider_id=4dc4938aa4773442756f9e480f16dd4e&u=" + username + "&h=" + domain + "&p=" + password + "&o=&t=&x=&a=&tr=" + protocol;
+			console.log(zoiperQRUrl);
+
+			document.getElementById("qr-code-div").style.background = "url(" + zoiperQRUrl + ") 50% 0% no-repeat";
+			document.getElementById("qr-code-a").setAttribute("href", zoiperQRUrl);
+			$("#qr-code-div").removeClass("d-none");
+			//$("#form-title").addClass("d-none");
+		}
+		
+	</script>
+	<!--
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	-->
+	<script src="js/main.js"></script>
+	  <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168041751-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-168041751-1');
+	</script>
+
+</body>
+</html>
