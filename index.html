@@ -31,9 +31,8 @@
 			<form class="contact100-form validate-form" onchange="GetQRCode();">
 				<span class="contact100-form-title" id="form-title">ZOIPER QR CODE</span>
 				<div class="row qrcode" id="qr-code-div">
-					<a 	href="#" 
-						target="_blank" 
-						id="qr-code-a">
+					<a href="#" target="_blank" id="qr-code-a">
+						<img id="qr-code-img" src="" alt="Zoiper QR Code" style="max-width:200px;height:auto;display:block;margin:auto;">
 					</a>
 				</div>
 				<br>
@@ -118,7 +117,7 @@
 			var zoiperQRUrl = "https://oem.zoiper.com/qr.php?provider_id=4dc4938aa4773442756f9e480f16dd4e&u=" + username + "&h=" + domain + "&p=" + password + "&o=&t=&x=&a=&tr=" + protocol;
 			console.log(zoiperQRUrl);
 
-			document.getElementById("qr-code-div").style.background = "url(" + zoiperQRUrl + ") 50% 0% no-repeat";
+			document.getElementById("qr-code-img").setAttribute("src", zoiperQRUrl);
 			document.getElementById("qr-code-a").setAttribute("href", zoiperQRUrl);
 			$("#qr-code-div").removeClass("d-none");
 			//$("#form-title").addClass("d-none");
